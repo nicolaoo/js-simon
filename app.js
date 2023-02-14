@@ -8,9 +8,12 @@
 
 let timer = document.getElementById('timer')
 let text = document.querySelector('.title')
-let numRandom = getRandomIntInclusive(1, 100)
 
-const numeriCasuali(5, 1, 100)
+
+const randomNumber = numeriCasuali (5, 1, 100)
+let numUser = []
+let winnerNumbers = []
+
 
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
@@ -23,10 +26,41 @@ function numeriCasuali(length, min, max){
 
     while(numbersRandom.length < length){
         const num = getRandomIntInclusive(min, max)
+
+        if(!numbersRandom.includes(num)){
+            numbersRandom.push(num)
+        } 
+
     }
 
     return numbersRandom
 }
+
+alert('ricorda questi numeri:'+ ' ' + randomNumber)
+
+setTimeout( function() {
+    while(numUser.length < randomNumber.length){
+
+        num = parseInt(prompt('inserisci i numeri che ti sei ricordato'))
+
+        if ( randomNumber.includes(num) && (!numUser.includes(num))){
+            console.log('hai vinto')
+
+            winnerNumbers.push(num)
+        }
+
+        numUser.push(num)
+    }
+
+console.log(randomNumber, numUser, num)
+console.log(winnerNumbers, 'hai indovinato:'+ ' ' + winnerNumbers.length +' '+ 'cioè il numero' +' '+ winnerNumbers)
+
+
+
+}, 3*1000)
+
+
+
 
 
 // for (let i = 0; i < 5; i++){
